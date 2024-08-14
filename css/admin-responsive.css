@@ -1,0 +1,25 @@
+:root {
+  --red: #b5292f;
+  --lightest-gray: rgb(249, 249, 249);
+}
+
+.page-title {
+  color: var(--lightest-gray);
+  background-color: var(--red);
+  text-align: center;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 786px) {
+}
+
+@media only screen and (max-width: 615px) {
+}
+
+@media only screen and (max-width: 470px) {
+}

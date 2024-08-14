@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #f5f5f5;
+}
+.top-header {
+  background: #ffffff;
+}
+.top-promotion-content {
+  line-height: 46px;
+  background: #ccccccb5;
+}
+.promotion-content-item {
+  color: black;
+  font-family: sans-serif;
+}
+.promotion-content-item a i {
+  color: black;
+  font-weight: bold;
+}
+.promotion-content-item a i:hover {
+  color: rgba(0, 0, 0, 0.675);
+}
+
+.promotion-content {
+  position: relative; /* Hoặc absolute nếu cần */
+  top: 56px; /* Đảm bảo z-index thấp hơn header */
+}
+.filter-collec {
+  display: flex;
+
+  justify-content: center;
+  margin: 10px auto;
+}
+
+/* Cấu trúc tổng quát */
+.wrapper-content {
+  padding: 20px;
+}
+
+.row.dFlex-row {
+  display: flex;
+  flex-wrap: nowrap; /* Không cho phép xuống dòng */
+  gap: 20px;
+}
+
+/* Cột chính */
+.boxBlog-left {
+  flex: 3; /* Chiếm 3 phần của tổng chiều rộng */
+  padding: 20px;
+}
+
+.listBlogs-content {
+  margin-bottom: 20px;
+}
+
+.heading-page h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  font-family: sans-serif;
+}
+
+/* Danh sách bài viết */
+.blog-posts {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.article-loop {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex: 1 1 calc(33.333% - 20px); /* 3 bài viết trên một hàng */
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.article-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.article-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.article-detail {
+  padding: 15px;
+}
+
+.article-title h3 {
+  font-size: 1.2rem;
+  margin: 0 0 10px;
+}
+
+.article-title h3 a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.article-title h3 a:hover {
+  text-decoration: underline;
+}
+
+.entry-content {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.article-post-meta {
+  position: absolute;
+  bottom: 10px;
+  right: 25px;
+  font-size: 0.875rem;
+  color: #999;
+}
+
+.article-post-meta .author {
+  margin-right: 10px;
+}
+
+.article-post-meta .date {
+  margin-left: 10px;
+}
+
+/* Sidebar */
+.boxBlog-right {
+  flex: 1; /* Chiếm 1 phần của tổng chiều rộng */
+  padding: 20px;
+}
+
+.group-sidebox {
+  padding: 15px;
+}
+
+.sidebox-title h4 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #333;
+}
+/* Phần danh sách bài viết mới nhất trong sidebar */
+.sidebox-content {
+  background: #f9f9f9;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-blogs-latest {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Khoảng cách giữa các bài viết */
+}
+
+.item-article {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Khoảng cách giữa hình ảnh và nội dung */
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* Đường viền phân cách giữa các bài viết */
+}
+
+.item-article:last-child {
+  border-bottom: none; /* Không có đường viền cho bài viết cuối cùng */
+}
+
+.post-image {
+  flex: 0 0 120px; /* Chiều rộng cố định cho hình ảnh */
+  height: 80px; /* Chiều cao cố định cho hình ảnh */
+  overflow: hidden; /* Ẩn phần hình ảnh vượt quá chiều cao */
+}
+
+.post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo hình ảnh không bị méo mó */
+}
+
+.post-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.post-content .h3 {
+  font-size: 0.875rem;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Thêm dấu chấm ba chấm khi tiêu đề quá dài */
+}
+
+.post-content .h3 a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.post-content .h3 a:hover {
+  text-decoration: underline;
+}
+
+.post-meta {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+.post-meta .cate {
+  margin-right: 10px;
+}
+
+.post-meta .author {
+  margin-right: 10px;
+}
+
+.post-meta .date {
+  margin-left: 10px;
+}

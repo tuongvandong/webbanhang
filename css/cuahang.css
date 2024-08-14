@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #f5f5f5;
+}
+.top-header {
+  background: #ffffff;
+}
+.top-promotion-content {
+  line-height: 46px;
+  background: #ccccccb5;
+}
+.promotion-content-item {
+  color: black;
+  font-family: sans-serif;
+}
+.promotion-content-item a i {
+  color: black;
+  font-weight: bold;
+}
+.promotion-content-item a i:hover {
+  color: rgba(0, 0, 0, 0.675);
+}
+
+.promotion-content {
+  position: relative; /* Hoặc absolute nếu cần */
+  top: 56px; /* Đảm bảo z-index thấp hơn header */
+}
+.filter-collec {
+  display: flex;
+
+  justify-content: center;
+  margin: 10px auto;
+}
+.police-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.police-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-direction: row;
+  box-shadow: 0px 0px 4px 2px #ccc;
+  width: 25%;
+  padding: 10px;
+  border-radius: 8px;
+}
+.police-item img {
+  object-fit: contain;
+  object-position: center;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+.police-item p {
+  text-align: left;
+  font-size: 19px;
+  font-weight: 500;
+  font-family: serif;
+  font-weight: bold;
+}
+
+.form-container {
+  border-radius: 8px;
+
+  text-align: center;
+
+  position: relative;
+  margin-top: 80px;
+}
+form {
+  display: flex;
+  width: 46%;
+}
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0px 8px;
+}
+
+button {
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4cae4c;
+}
+
+#store-container {
+  top: 13px;
+  position: relative;
+
+  padding: 16px;
+}
+.store-item {
+  background: white;
+  padding: 9px 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+  box-shadow: 0px 0px 4px 2px #ccc;
+  margin-top: 15px;
+}
+
+.store--time span {
+  font-weight: bold;
+}
+
+.store--hotline span {
+  font-weight: bold;
+}
+.address {
+  display: flex;
+}

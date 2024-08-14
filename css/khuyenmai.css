@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #f5f5f5;
+}
+.top-header {
+  background: #ffffff;
+}
+.top-promotion-content {
+  line-height: 46px;
+  background: #ccccccb5;
+}
+.promotion-content-item {
+  color: black;
+  font-family: sans-serif;
+}
+.promotion-content-item a i {
+  color: black;
+  font-weight: bold;
+}
+.promotion-content-item a i:hover {
+  color: rgba(0, 0, 0, 0.675);
+}
+
+.promotion-content {
+  position: relative; /* Hoặc absolute nếu cần */
+  top: 56px; /* Đảm bảo z-index thấp hơn header */
+}
+.filter-collec {
+  display: flex;
+
+  justify-content: center;
+  margin: 10px auto;
+}
