@@ -1,180 +1,158 @@
 // Animations
-const registerButton = document.getElementById("register");
-const loginButton = document.getElementById("login");
-const container = document.getElementById("container");
-
-registerButton.addEventListener("click", () => {
-  container.classList.add("right-panel-active");
+document.getElementById("register").addEventListener("click", () => {
+  document.getElementById("container").classList.add("right-panel-active");
+});
+document.getElementById("login").addEventListener("click", () => {
+  document.getElementById("container").classList.remove("right-panel-active");
 });
 
-loginButton.addEventListener("click", () => {
-  container.classList.remove("right-panel-active");
-});
-
-// Check Register Error
+// Form validation
 const form = document.querySelector("form");
 const username = document.getElementById("username");
-const usernameError = document.querySelector("#username-error");
 const email = document.getElementById("email");
-const emailError = document.querySelector("#email-error");
 const password = document.getElementById("password");
-const passwordError = document.querySelector("#password-error");
 
-// Show input error message
-function showError(input, message) {
+// Hiển thị lỗi
+const showError = (input, message) => {
   const formControl = input.parentElement;
-  formControl.className = "form-control error";
-  const small = formControl.querySelector("small");
-  small.innerText = message;
-}
+  formControl.classList.add("error");
+  formControl.querySelector("small").innerText = message;
+};
 
-// Show success outline
-function showSuccess(input) {
+// Xóa lỗi
+const showSuccess = (input) => {
   const formControl = input.parentElement;
-  formControl.className = "form-control success";
-  const small = formControl.querySelector("small");
-  small.innerText = "";
-}
+  formControl.classList.remove("error");
+  formControl.querySelector("small").innerText = "";
+};
 
-// Check email is valid
-function checkEmail(email) {
-  const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  return emailRegex.test(email);
-}
+// Kiểm tra email hợp lệ
+const checkEmail = (email) =>
+  /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
 
-email.addEventListener("input", function () {
-  if (!checkEmail(email.value)) {
-    emailError.textContent = "*Email is not valid";
-  } else {
-    emailError.textContent = "";
-  }
+email.addEventListener("input", () => {
+  email.nextElementSibling.textContent = checkEmail(email.value)
+    ? ""
+    : "*Email không hợp lệ";
 });
 
-// Check length input user name
-username.addEventListener("input", function () {
-  if (username.value.length < 4) {
-    usernameError.textContent = "*Username must be at least 8 characters.";
-  } else if (username.value.length > 20) {
-    usernameError.textContent = "*Username must be less than 20 characters.";
-  } else {
-    usernameError.textContent = "";
-  }
-});
+// Kiểm tra độ dài username và password
+const checkLength = (input, min, max, message) => {
+  input.nextElementSibling.textContent =
+    input.value.length < min || input.value.length > max ? message : "";
+};
 
-// Check length input password
-password.addEventListener("input", function () {
-  if (password.value.length < 8) {
-    passwordError.textContent = "*Password must be at least 8 characters.";
-  } else if (password.value.length > 20) {
-    passwordError.textContent = "*Password must be less than 20 characters.";
-  } else {
-    passwordError.textContent = "";
-  }
-});
+username.addEventListener("input", () =>
+  checkLength(username, 4, 20, "*Tên đăng nhập từ 4-20 ký tự")
+);
+password.addEventListener("input", () =>
+  checkLength(password, 8, 20, "*Mật khẩu từ 8-20 ký tự")
+);
 
-// Check required fields
-function checkRequired(inputArr) {
-  let isRequired = false;
-  inputArr.forEach(function (input) {
-    if (input.value.trim() === "") {
-      showError(input, `*${getFieldName(input)} is required`);
-      isRequired = true;
-    } else {
-      showSuccess(input);
-    }
+// Kiểm tra các trường nhập
+const checkRequired = (inputs) => {
+  let isValid = true;
+  inputs.forEach((input) => {
+    if (!input.value.trim()) {
+      showError(input, `*${input.placeholder} không được để trống`);
+      isValid = false;
+    } else showSuccess(input);
   });
+  return isValid;
+};
 
-  return isRequired;
-}
-
-// Get fieldname
-function getFieldName(input) {
-  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
-// Event listeners
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  if (!checkRequired([username, email, password])) {
-    // checkLength(username, 3, 15)
-    // checkLength(password, 6, 25)
-    // checkEmail(email)
+  if (checkRequired([username, email, password])) {
+    alert("Đăng ký thành công!");
   }
 });
 
-// Check Login Error
+// Xử lý đăng nhập
+const lgForm = document.querySelector(".form-lg");
+const lgEmail = document.querySelector(".email-2");
+const lgPassword = document.querySelector(".password-2");
 
-let lgForm = document.querySelector(".form-lg");
-let lgEmail = document.querySelector(".email-2");
-let lgEmailError = document.querySelector(".email-error-2");
-let lgPassword = document.querySelector(".password-2");
-let lgPasswordError = document.querySelector(".password-error-2");
+lgEmail.addEventListener("input", () => {
+  lgEmail.nextElementSibling.textContent = checkEmail(lgEmail.value)
+    ? ""
+    : "*Email không hợp lệ";
+});
+lgPassword.addEventListener("input", () =>
+  checkLength(lgPassword, 8, 20, "*Mật khẩu từ 8-20 ký tự")
+);
 
-function showError2(input, message) {
-  const formControl2 = input.parentElement;
-  formControl2.className = "form-control2 error";
-  const small2 = formControl2.querySelector("small");
-  small2.innerText = message;
-}
-
-function showSuccess2(input) {
-  const formControl2 = input.parentElement;
-  formControl2.className = "form-control2 success";
-  const small2 = formControl2.querySelector("small");
-  small2.innerText = "";
-}
-
-// Check email is valid
-function checkEmail2(lgEmail) {
-  const emailRegex2 = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  return emailRegex2.test(lgEmail);
-}
-
-lgEmail.addEventListener("input", function () {
-  if (!checkEmail2(lgEmail.value)) {
-    lgEmailError.textContent = "*Email is not valid";
+lgForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (checkRequired([lgEmail, lgPassword]) && checkEmail(lgEmail.value)) {
+    alert("Đăng nhập thành công!");
+    window.location.href = "index.html";
   } else {
-    lgEmailError.textContent = "";
+    alert("Sai email hoặc mật khẩu!");
   }
 });
 
-// Check length input passwrod
-lgPassword.addEventListener("input", function () {
-  if (lgPassword.value.length < 8) {
-    lgPasswordError.textContent = "*Password must be at least 8 characters.";
-  } else if (lgPassword.value.length > 20) {
-    lgPasswordError.textContent = "*Password must be less than 20 characters.";
-  } else {
-    lgPasswordError.textContent = "";
-  }
-});
+// hàm login kiểm tra đăng nhập
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("loginform");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
 
-function checkRequiredLg(inputArr2) {
-  let isRequiredLg = false;
-  inputArr2.forEach(function (input) {
-    if (input.value.trim() === "") {
-      showError2(
-        input,
-        `*${getFieldNameLg(input)} Please enter your information in this field`
+  const loginContainer = document.querySelector(".header-middle-right-item a"); // Nút đăng nhập
+  const userInfo = document.querySelector(".user-info"); // Thông tin user sau khi đăng nhập
+  const userAvatar = document.getElementById("user-avatar");
+  const userName = document.getElementById("user-name");
+  const logoutButton = document.getElementById("logout-btn");
+
+  const users = [
+    {
+      email: "tuongdong080403@gmail.com",
+      password: "12345678",
+      name: "Tưởng Văn Đồng",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5fr1owd6MRbY8x4olsdPPBsbrG4JD3iaY0Q&s",
+    },
+  ];
+
+  //  Xử lý đăng nhập
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const emailValue = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      const foundUser = users.find(
+        (u) => u.email === emailValue && u.password === password
       );
-      isRequiredLg = true;
-    } else {
-      showSuccess2(input);
-    }
-  });
 
-  return isRequiredLg;
-}
+      if (foundUser) {
+        localStorage.setItem("user", JSON.stringify(foundUser));
 
-function getFieldNameLg(input) {
-  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
-lgForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  if (!checkRequiredLg([lgEmail, lgPassword])) {
-    checkEmail2(lgEmail);
+        alert("Đăng nhập thành công!");
+        if (loginContainer) loginContainer.style.display = "none"; // Ẩn nút đăng nhập
+        if (userInfo) {
+          userInfo.style.display = "flex"; // Hiện thông tin user
+          userAvatar.src = foundUser.avatar;
+          userName.textContent = foundUser.name;
+        }
+        window.location.href = "index.html"; // Reload lại trang
+      } else {
+        alert("Sai email hoặc mật khẩu!");
+      }
+    });
   }
+
+  //  Xử lý đăng xuất
+  if (logoutButton) {
+    logoutButton.addEventListener("click", function () {
+      localStorage.removeItem("user");
+
+      alert("Bạn đã đăng xuất!");
+      if (loginContainer) loginContainer.style.display = "block"; // Hiện lại nút đăng nhập
+      if (userInfo) userInfo.style.display = "none"; // Ẩn thông tin user
+      window.location.reload();
+    });
+  }
+
+  checkLogin();
 });

@@ -14,45 +14,39 @@
       type="text/css"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="css/admin.css" />
+   <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/admin-responsive.css" />
     <title>Quản lý cửa hàng</title>
   </head>
 
   <body>
-    <header class="header">
-      <button class="menu-icon-btn">
-        <div class="menu-icon">
-          <i class="fa-regular fa-bars"></i>
-        </div>
-      </button>
-    </header>
+  
     <div class="container">
       <aside class="sidebar open">
         <div class="top-sidebar">
           <a href="#" class="channel-logo"
             ><img src="picture/logo/logo.png" alt="Channel Logo"
           /></a>
-          <div class="hidden-sidebar your-channel">Admin</div>
+          <div class="hidden-sidebar your-channel" id="admin-greeting"></div>
         </div>
 
         <ul class="app-menu">
           <li>
-            <a class="app-menu__item haha" href=""
+            <a class="app-menu__item active" href=""
               ><i class="app-menu__icon bx bx-cart-alt"></i>
-              <span class="app-menu__label">POS Bán Hàng</span></a
+              <span class="app-menu__label">Thêm sản phẩm</span></a
             >
           </li>
           <li>
-            <a class="app-menu__item active"
+            <a class="app-menu__item " href="#"
               ><i class="app-menu__icon bx bx-tachometer"></i
-              ><span class="app-menu__label">Bảng điều khiển</span></a
+              ><span class="app-menu__label">Thêm mới bài viết</span></a
             >
           </li>
           <li>
             <a class="app-menu__item" href=""
               ><i class="app-menu__icon bx bx-id-card"></i>
-              <span class="app-menu__label">Quản lý nhân viên</span></a
+              <span class="app-menu__label">Quản lý cửa hàng</span></a
             >
           </li>
           <li>
@@ -108,27 +102,8 @@
         <div class="bottom-sidebar">
           <ul class="sidebar-list">
             <li class="sidebar-list-item user-logout">
-              <a href="/" class="sidebar-link">
-                <div class="sidebar-icon">
-                  <i class="fa-thin fa-circle-chevron-left"></i>
-                </div>
-                <div class="hidden-sidebar">Trang chủ</div>
-              </a>
-            </li>
-            <li class="sidebar-list-item user-logout">
-              <a href="#" class="sidebar-link">
-                <div class="sidebar-icon">
-                  <i class="fa-light fa-circle-user"></i>
-                </div>
-                <div class="hidden-sidebar" id="name-acc"></div>
-              </a>
-            </li>
-            <li class="sidebar-list-item user-logout">
-              <a href="#" class="sidebar-link" id="logout-acc">
-                <div class="sidebar-icon">
-                  <i class="fa-light fa-arrow-right-from-bracket"></i>
-                </div>
-                <div class="hidden-sidebar">Đăng xuất</div>
+              <a href="#" class="sidebar-link" id="logout-acc"> 
+                <button class="hidden-sidebar">Đăng xuất</button>
               </a>
             </li>
           </ul>
@@ -136,51 +111,87 @@
       </aside>
       <div class="content">
         <div class="section active">
-          <h1 class="page-title">Quản lý Admin - Cửa hàng Quần áo Nam</h1>
+          <h1 class="page-title" id="welcome-message"></h1>
           <!-- Form Quản lý Sản phẩm -->
           <section id="manage-products-form">
             <h2>Quản lý Sản phẩm</h2>
+            <div class="form-container">
+            <h2>Thêm Sản Phẩm Mới</h2>
             <form id="productForm">
-              <div class="form-group">
-                <label for="productName">Tên Sản phẩm:</label>
-                <input
-                  type="text"
-                  id="productName"
-                  name="productName"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="productPrice">Giá (VND):</label>
-                <input
-                  type="number"
-                  id="productPrice"
-                  name="productPrice"
-                  min="0"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="productStock">Số lượng tồn kho:</label>
-                <input
-                  type="number"
-                  id="productStock"
-                  name="productStock"
-                  min="0"
-                  required
-                />
-              </div>
-              <button type="submit">Thêm Sản phẩm</button>
+                <label for="productName">Tên sản phẩm:</label>
+                <input type="text" id="productName" placeholder="Nhập tên sản phẩm" required>
+    
+                <label for="productPrice">Giá sản phẩm:</label>
+                <input type="number" id="productPrice" placeholder="Nhập giá sản phẩm" required>
+    
+                <label for="productDescription">Mô tả sản phẩm:</label>
+                <textarea id="productDescription" placeholder="Nhập mô tả sản phẩm" required></textarea>
+    
+                <label for="productImage">Hình ảnh:</label>
+                <input type="file" id="productImage" accept="image/*" required>
+    
+                <label for="productCategory">Danh mục:</label>
+                <select id="productCategory" class="form-select" required>
+                  <option value="">Chọn danh mục</option>
+                  <!-- Áo Nam -->
+                  <optgroup label="Áo Nam">
+                      <option value="tshirt">Sơ mi ngắn tay</option>
+                      <option value="shirt">Sơ mi dài tay</option>
+                      <option value="jacket">Áo Polo</option>
+                      <option value="sweater">Áo Len</option>
+                      <option value="jacket">Áo Khoác</option>
+                      <option value="tanktop">Áo Ba lỗ</option>
+                      <option value="hoodie">Áo Hoodie</option>
+                  </optgroup>
+                  <!-- Thời Trang -->
+                  <optgroup label="Quần Nam">
+                  <option value="quan-au">Quần Âu</option>
+                  <option value="quan-jean">Quần Jean</option>
+                  <option value="quan-kaki">Quần Kaki</option>
+                  <option value="quan-short">Quần Short</option>
+                  <option value="quan-dui">Quần Đùi</option>
+              </optgroup>
+                  <!-- Đồ Gia Dụng -->
+                  <optgroup label="Phụ kiện kèm">
+                    <option value="glasses">Mắt kính</option>
+                    <option value="socks">Tất ngắn</option>
+                    <option value="belt">Thắt lưng</option>
+                    <option value="backpack">Balo - Túi xách</option>
+                    <option value="wallet">Ví</option>
+
+                  </optgroup>
+              </select>
+              
+    
+                <button type="submit">Thêm sản phẩm</button>
             </form>
-            <div id="productConfirmation" style="display: none">
-              <!-- Thông báo xác nhận sẽ được hiển thị ở đây -->
-            </div>
+            <div id="message"></div>
           </section>
         </div>
       </div>
-
       <div id="toast"></div>
     </div>
+    <script>
+     document.addEventListener("DOMContentLoaded",function(){
+        const isLoggedIn = sessionStorage.getItem("isAdminLoggedIn");
+        const adminName = sessionStorage.getItem("adminName");
+
+        if(isLoggedIn !== "true"){
+          window.location.href = "login-admin.html";
+        }
+        else{
+          document.getElementById("admin-greeting").textContent = `Xin chào : ${adminName}`;
+          document.getElementById("welcome-message").textContent = `Chào mừng ${adminName} đến với hệ thống quản lý sản phẩm`;
+            }
+
+            // Xử lý đăng xuất
+            document.getElementById("logout-acc").addEventListener("click", function () {
+                sessionStorage.removeItem("isAdminLoggedIn");
+                sessionStorage.removeItem("adminName");
+                window.location.href = "login-admin.html"; // Chuyển hướng về trang đăng nhập
+            });
+     })
+  </script>
     <script src="js/admin.js"></script>
   </body>
 </html>

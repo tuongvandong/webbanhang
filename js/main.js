@@ -43,10 +43,8 @@ function startCountdown() {
   const hoursElement = countdownElement.querySelector(".hours");
   const minutesElement = countdownElement.querySelector(".minutes");
   const secondsElement = countdownElement.querySelector(".seconds");
-  // tính số giây trong một ngày
   const totalSeconds =
     parseInt(countdownElement.getAttribute("data-time")) * 24 * 60 * 60;
-  // lưu lại số giây
   let remainingTime = totalSeconds;
 
   function updateCountdown() {
@@ -54,16 +52,16 @@ function startCountdown() {
     const hours = Math.floor((remainingTime % (24 * 60 * 60)) / (60 * 60));
     const minutes = Math.floor((remainingTime % (60 * 60)) / 60);
     const seconds = remainingTime % 60;
-    // Đảm bảo số có ít nhất hai chữ số, thêm số 0 ở đầu nếu cần.
+
     daysElement.textContent = String(days).padStart(2, "0");
     hoursElement.textContent = String(hours).padStart(2, "0");
     minutesElement.textContent = String(minutes).padStart(2, "0");
     secondsElement.textContent = String(seconds).padStart(2, "0");
 
     if (remainingTime > 0) {
-      remainingTime--; //Giảm remainingTime đi một giây.
+      remainingTime--;
     } else {
-      clearInterval(countdownInterval); //Dừng bộ đếm ngược khi remainingTime bằng 0.
+      clearInterval(countdownInterval);
     }
   }
 
@@ -97,11 +95,12 @@ const swiper = new Swiper(".slider-wrapper", {
     0: {
       slidesPerView: 2,
     },
+
     768: {
-      slidesPerView: 2,
+      slidesPerView: 3,
     },
     1024: {
-      slidesPerView: 3,
+      slidesPerView: 4,
     },
     1200: {
       slidesPerView: 4,

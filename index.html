@@ -31,6 +31,7 @@
                   <img src="./picture/logo/logo.png" alt="Not fount" />
                 </a>
               </div>
+              <!-- menu- header -->
               <div class="menu-search-icon l-0 m-10 c-9">
                 <div class="btn-menu">
                   <ul class="zn-btn-menu">
@@ -353,7 +354,6 @@
                     <a href=""><i class="fas fa-search"></i></a>
                   </button>
                 </form>
-
                 <div class="header-middle-right">
                   <ul class="header-middle-right-list">
                     <li class="header-middle-right-item" onclick="openCart()">
@@ -361,15 +361,33 @@
                         <i class="fa-light fa-basket-shopping"></i>
                         <span class="count-product-cart">0</span>
                       </div>
-                      <span class="text-shopping">Giỏ hàng</span>
+                      <a href="giohang.html">
+                        <span class="text-shopping">Giỏ hàng</span>
+                      </a>
                     </li>
                     <li class="header-middle-right-item dropdown">
                       <a href="login.html" title="Đăng nhập/Đăng ký">
-                        <i class="fa-light fa-user"></i>
                         <div class="auth-container">
-                          <span class="text-dndk">Đăng nhập</span>
+                          <button class="text-dndk">
+                            <i class="fa-light fa-user"></i>
+                            Đăng nhập
+                          </button>
                         </div>
                       </a>
+                    </li>
+                    <!-- đăng nhập thành công -->
+                    <li
+                      class="header-middle-right-item dropdown user-info"
+                      style="display: none"
+                    >
+                      <img
+                        id="user-avatar"
+                        src=""
+                        alt="Avatar"
+                        class="user-avatar"
+                      />
+                      <span id="user-name"></span>
+                      <button id="logout-btn">Đăng xuất</button>
                     </li>
                   </ul>
                 </div>
@@ -704,7 +722,9 @@
                         <span>HSD: 30/07/2024</span>
                       </div>
                       <div class="coupon-copy">
-                        <button class="wd-coupon-copy">Sao chép mã</button>
+                        <button class="wd-coupon-copy" title="Sao chép">
+                          Sao chép mã
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -1019,11 +1039,17 @@
               <span class="price" id="modalTotalPrice"></span>
             </div>
             <div class="modal-footer-control">
-              <button class="button-dathangngay" data-product="33">
+              <button
+                class="button-dathangngay"
+                title="Đặt hàng ngay"
+                
+                data-product="33"
+              >
                 Đặt hàng ngay
               </button>
               <button
                 class="button-dat"
+                title="Thêm vào giỏ hàng"
                 id="add-cart"
                 onclick="animationCart()"
               >
@@ -1034,38 +1060,6 @@
         </div>
       </div>
 
-      <!-- modal-cart -->
-      <div class="modal-cart">
-        <div class="cart-container">
-          <div class="cart-header">
-            <h3 class="cart-header-title">
-              <i class="fa-regular fa-basket-shopping-simple"></i> Giỏ hàng
-            </h3>
-            <button class="cart-close" onclick="closeCart()">
-              <i class="fa-sharp fa-solid fa-xmark"></i>
-            </button>
-          </div>
-          <div class="cart-body">
-            <div class="gio-hang-trong">
-              <i class="fa-thin fa-cart-xmark"></i>
-              <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
-            </div>
-            <ul class="cart-list"></ul>
-          </div>
-          <div class="cart-footer">
-            <div class="cart-total-price">
-              <p class="text-tt">Tổng tiền:</p>
-              <p class="text-price">0&nbsp;₫</p>
-            </div>
-            <div class="cart-footer-payment">
-              <button class="Sam-them">
-                <i class="fa-regular fa-plus"></i> Sắm Thêm
-              </button>
-              <button class="thanh-toan disabled">Thanh toán</button>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- footer -->
       <footer id="footer" class="footer-header">
         <div class="container">
@@ -1271,7 +1265,6 @@
         <img src="picture/logo/toggle-list/phone.png" alt="" title="Hỗ trợ" />
       </a>
     </div>
-
     <div class="product-details"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
